@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Holarchy on Paper, Hierarchy in Code: An Industrial Experience Report on a Koestler-Inspired Multi-Agent System for Ticket-to-Pull-Request Automation"
+authors:
+  - family-names: Coelho
+    given-names: Felipe
+    email: felipecoelho.ness@gmail.com
+date-released: 2026-11-02
+version: 1.0.0
+license: CC-BY-4.0
+repository-code: "https://github.com/Felipeness/holarchy-coding-agents"
+type: article
+keywords:
+  - LLM agents
+  - multi-agent systems
+  - holonic systems
+  - automated program repair
+  - experience report
