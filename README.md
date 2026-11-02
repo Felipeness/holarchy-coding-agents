@@ -1,4 +1,4 @@
-# Holarchy on Paper, Hierarchy in Code
+# A Holarchy of Coding Agents
 
 **An industrial experience report on a Koestler-inspired multi-agent system for ticket-to-pull-request automation.**
 
@@ -16,12 +16,13 @@ The system takes an issue-tracker ticket, localises code through a seven-layer s
 - 17 autonomous investigation PRs.
 - 9 ticket analyses.
 
-Two properties of the holarchy survived production:
+The holonic properties realised in production:
 
 - delegated authority over an irreversible action;
-- an upward channel through which runner behaviour revises the parent's diagnosis.
+- an upward channel through which runner behaviour revises the parent's diagnosis;
+- autonomous origination of work.
 
-Peer negotiation, refusal and veto did not survive.
+An explicit negotiation protocol between holons was designed but remains unwired.
 
 ## Timeline of public artefacts
 

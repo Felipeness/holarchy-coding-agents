@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
-title: "Holarchy on Paper, Hierarchy in Code: An Industrial Experience Report on a Koestler-Inspired Multi-Agent System for Ticket-to-Pull-Request Automation"
+title: "A Holarchy of Coding Agents: An Industrial Experience Report on a Koestler-Inspired Multi-Agent System for Ticket-to-Pull-Request Automation"
 authors:
   - family-names: Soares Coelho
     given-names: Luis Felipe

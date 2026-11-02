@@ -10,7 +10,7 @@
 
 \begin{document}
 
-\title{Holarchy on Paper, Hierarchy in Code:\\
+\title{A Holarchy of Coding Agents:\\
 An Industrial Experience Report on a Koestler-Inspired\\
 Multi-Agent System for Ticket-to-Pull-Request Automation}
 
@@ -35,11 +35,12 @@ scores, and opens a PR. We describe two generations of the system, a code
 audit that compares the intended holarchy with what the code actually does,
 and field data: 22 PRs on 11 tickets in 6 repositories, opened by 4
 engineers, of which 2 PRs (one ticket) were merged; plus 17 autonomous
-investigation PRs and 9 ticket analyses. Two properties of the holarchy
-survived contact with production: delegated authority over an irreversible
-action, and an upward channel through which runner behaviour revises the
-parent's diagnosis. Peer negotiation, refusal and veto did not survive. We
-distil five lessons, chiefly that correctness proxies, repository selection
+investigation PRs and 9 ticket analyses. The holonic properties realised
+in production are delegated authority over an irreversible action, an
+upward channel through which runner behaviour revises the parent's
+diagnosis, and autonomous origination of work; an explicit negotiation
+protocol between holons was designed but remains unwired. We distil five
+lessons, chiefly that correctness proxies, repository selection
 and PR hygiene dominated outcomes far more than agent topology.
 \end{abstract}
 
@@ -58,7 +59,8 @@ at once \cite{deepseek2026superagent}. Architectures that let agents take
 work from tickets and events without per-task prompting are therefore
 attractive.
 
-Most such architectures are hierarchical. DeepSeek's super-agent prototype
+Most such architectures are command hierarchies: authority sits at the top
+and parts only execute. DeepSeek's super-agent prototype
 \cite{deepseek2026superagent} is representative: a router session receives
 triggers, evaluates them, and launches one executor session per ticket;
 executors report to the router and have no tool to message one another.
@@ -69,8 +71,11 @@ Manufacturing faced a similar tension three decades ago and answered with
 \emph{holonic} systems \cite{vanbrussel1998prosa,gerber1999holonic,giret2004holons},
 built on Koestler's notion of the holon \cite{koestler1967}: a unit that is
 self-assertive toward its parts and integrative toward its whole (the
-``Janus effect''). A holarchy is a nesting of such units, in which authority
-is distributed rather than concentrated at the top.
+``Janus effect''). A holarchy is a nesting of such units. It has levels,
+but it is not a command hierarchy: each holon governs itself by its own
+rules, decides within its scope without asking the level above, and
+informs that level in return. Authority is distributed along the levels
+rather than concentrated at the top.
 
 This paper reports on applying that idea to ticket-to-PR automation.
 The author designed and built the system as an individual engineer.
@@ -233,11 +238,12 @@ Asynchronous holon integration & absent & blocking HTTP, up to 15\,min \\
 \end{tabular}
 \end{table}
 
-Three findings matter beyond this system. First, \emph{holarchy eroded
-toward hierarchy under delivery pressure}: the production path became a
-fixed sequential script, while the richer agent loop (a 15-state machine and
-29 tools) was never wired to the server. Negotiation endpoints exist but
-always accept. Second, \emph{documentation overstated the code}: the
+Three findings matter beyond this system. First, \emph{the holarchy held,
+but its negotiation layer was left unwired under delivery pressure}: each
+holon kept its own scope of decision, yet the sequence between them became a
+fixed script, while the richer agent loop (a 15-state machine and 29 tools)
+was never wired to the server. Negotiation endpoints exist but always
+accept. Second, \emph{documentation overstated the code}: the
 documented scoring rubric is dead code, the ``thinkers'' were described as a
 stronger model but ran the same one, and the state count differed. Third,
 \emph{contracts drifted between holons}: in the second generation the chat
@@ -327,10 +333,11 @@ call but runs fifteen runners per round.
 \section{Lessons}
 \label{sec:lessons}
 
-\textbf{L1: Keep the two holonic properties that cost nothing.} Delegated
-authority and upward correction were cheap to build and survived every
-refactoring. Negotiation protocols were expensive and were the first thing
-cut. A holarchy for agents should start from these two.
+\textbf{L1: Start from the holonic properties that cost little.} Delegated
+authority and upward correction were cheap to build and held through every
+refactoring. An explicit negotiation protocol was expensive and was
+deferred. A holarchy of agents can start from autonomy and upward
+correction and add negotiation once those are stable.
 
 \textbf{L2: Topology mattered less than the edges of the pipeline.}
 Repository selection, base-branch freshness and PR deduplication caused most
@@ -363,8 +370,9 @@ built the system and conducted the audit.
 
 A Koestler-style holarchy is a useful lens for agent systems: it names the
 two properties (authority delegated to parts, information flowing up to
-revise the whole) that distinguish a holon from a worker. In our deployment
-those two survived and the rest eroded into a conventional pipeline.
+revise the whole) that distinguish a holon from a worker. Our deployment
+realised both in production; negotiation between holons is the part still
+to be built.
 DeepSeek's recent super-agent \cite{deepseek2026superagent} keeps the router
 in charge of every decision; our experience suggests that letting the part
 decide, and letting it correct the whole, is feasible in production today.
