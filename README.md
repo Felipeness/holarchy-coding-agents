@@ -2,7 +2,7 @@
 
 **An industrial experience report on a Koestler-inspired multi-agent system for ticket-to-pull-request automation.**
 
-Felipe Coelho, independent researcher, Brazil.
+Luis Felipe Soares Coelho, independent researcher, Brazil.
 
 [Read the paper (PDF)](paper/main.pdf)
 
